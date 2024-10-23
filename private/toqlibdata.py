@@ -67,7 +67,7 @@ def convert_polygon_to_qlib(symbols, input_dir, output_dir):
             print(f"Error processing symbol {symbol}: {e}")
 
 # Example usage
-symbols_list = ["A"]  # Replace with your list of symbols
+symbols_list = ["MSFT", "GOOGL", "NVDA", "AMZN","AAPL"]  # Replace with your list of symbols
 input_directory = "~/NaAn/data/index"  # Replace with your input directory path
 output_directory = "/home/yungt/qlib_data"  # Replace with your output directory path
 

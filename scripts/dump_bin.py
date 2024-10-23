@@ -226,6 +226,10 @@ class DumpDataBase:
             bin_path = features_dir.joinpath(f"{field.lower()}.{self.freq}{self.DUMP_FILE_SUFFIX}")
             if field not in _df.columns:
                 continue
+            # Ensure the column is numeric
+            if not pd.api.types.is_numeric_dtype(_df[field]):
+                logger.warning(f"Field '{field}' contains non-numeric data. Skipping.")
+                continue
             if bin_path.exists() and self._mode == self.UPDATE_MODE:
                 # update
                 with bin_path.open("ab") as fp:
@@ -279,6 +283,7 @@ class DumpDataAll(DumpDataBase):
                 for file_path, ((_begin_time, _end_time), _set_calendars) in zip(
                     self.csv_files, executor.map(_fun, self.csv_files)
                 ):
+                    print(f"Processing file: {file_path}")  # Added line to print file name
                     all_datetime = all_datetime | _set_calendars
                     if isinstance(_begin_time, pd.Timestamp) and isinstance(_end_time, pd.Timestamp):
                         _begin_time = self._format_datetime(_begin_time)
