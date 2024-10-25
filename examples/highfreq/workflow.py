@@ -5,7 +5,7 @@ import fire
 
 import qlib
 import pickle
-from qlib.constant import REG_CN
+from qlib.constant import REG_US
 from qlib.config import HIGH_FREQ_CONFIG
 
 from qlib.utils import init_instance_by_config
@@ -22,10 +22,10 @@ class HighfreqWorkflow:
 
     MARKET = "all"
 
-    start_time = "2020-09-15 00:00:00"
-    end_time = "2021-01-18 16:00:00"
-    train_end_time = "2020-11-30 16:00:00"
-    test_start_time = "2020-12-01 00:00:00"
+    start_time = "2022-01-03 09:29:00"
+    end_time = "2022-12-30 16:38:00"
+    train_end_time = "2022-11-30 16:03:00"
+    test_start_time = "2022-12-01 09:30:00"
 
     DATA_HANDLER_CONFIG0 = {
         "start_time": start_time,
@@ -85,7 +85,7 @@ class HighfreqWorkflow:
         # use cn_data_1min data
         QLIB_INIT_CONFIG = {**HIGH_FREQ_CONFIG, **self.SPEC_CONF}
         provider_uri = QLIB_INIT_CONFIG.get("provider_uri")
-        GetData().qlib_data(target_dir=provider_uri, interval="1min", region=REG_CN, exists_skip=True)
+        GetData().qlib_data(target_dir=provider_uri, interval="1min", region=REG_US, exists_skip=True)
         qlib.init(**QLIB_INIT_CONFIG)
 
     def _prepare_calender_cache(self):

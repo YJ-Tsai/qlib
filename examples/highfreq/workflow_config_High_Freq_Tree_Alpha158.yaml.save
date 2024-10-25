@@ -1,13 +1,13 @@
 qlib_init:
-    provider_uri: "~/.qlib/custom_minute_data"
-    region: us
-market: &market 'all'
-start_time: &start_time "2022-01-03 09:29:00"
-end_time: &end_time "2022-12-30 16:38:00"
-train_end_time: &train_end_time "2022-11-15 16:03:00"
-valid_start_time: &valid_start_time "2022-11-16 09:30:00"
-valid_end_time: &valid_end_time "2022-11-30 16:03:00"
-test_start_time: &test_start_time "2022-12-01 09:30:00"
+    provider_uri: "/mnt/data/qlib_data/minute"
+    region: US
+market: &market 'csi300'
+start_time: &start_time "2020-09-15 00:00:00"
+end_time: &end_time "2021-01-18 16:00:00"
+train_end_time: &train_end_time "2020-11-15 16:00:00"
+valid_start_time: &valid_start_time "2020-11-16 00:00:00"
+valid_end_time: &valid_end_time "2020-11-30 16:00:00"
+test_start_time: &test_start_time "2020-12-01 00:00:00"
 data_handler_config: &data_handler_config
     start_time: *start_time
     end_time: *end_time
